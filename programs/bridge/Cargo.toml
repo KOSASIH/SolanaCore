@@ -1,0 +1,18 @@
+[package]
+name = "bridge"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "bridge"
+
+[dependencies]
+anchor-lang = "0.28.0"
+anchor-spl = "0.28.0"
+wormhole = "0.1.0"  # Placeholder for Wormhole SDK (use actual crate or CPI)
+pi-coin = { path = "../pi-coin" }
+
+[dev-dependencies]
+mocha = "10"
+chai = "4"
