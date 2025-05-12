@@ -1,0 +1,3 @@
+[dependencies]
+halo2_proofs = "0.3.0"  # For ZKPs
+anchor-lang = "0.28.0"
