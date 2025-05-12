@@ -1,0 +1,11 @@
+[features]
+seeds = []
+[programs.devnet]
+bridge = "YourBridgeProgramId"  # Replace with actual program ID after deployment
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+[dependencies]
+pi_coin = { path = "../pi-coin" }  # Reference pi-coin program for token transfers
