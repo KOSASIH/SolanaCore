@@ -1,0 +1,7 @@
+fastapi==0.103.0
+uvicorn==0.23.2
+python-dotenv==1.0.0
+solana==0.30.0
+anchorpy==0.16.0
+httpx==0.24.1
+pydantic==2.4.2
