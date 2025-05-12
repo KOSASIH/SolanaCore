@@ -9,6 +9,19 @@ A revolutionary DeFi platform on Solana, empowering Pi Coin as a stablecoin pegg
 - Cross-Chain Bridge: Interoperability with Pi Network, Ethereum, and more via Wormhole.
 - AI Analytics: Fraud detection and resource optimization with Cosmic Radiation Hardened AI.
 
+## Backend API (Ultra High-Tech)
+A FastAPI backend with quantum-secured authentication, AI fraud detection, WebSocket notifications, and interplanetary transaction routing.
+
+### Features
+- **Quantum JWT**: Secure access with quantum-resistant authentication.
+- **WebSocket Updates**: Real-time transaction and governance notifications.
+- **CRHAI Fraud Detection**: AI-powered transaction monitoring.
+- **Interplanetary Routing**: Latency-aware transaction orchestration.
+- **IPFS Logging**: Decentralized storage for API metadata.
+- **New Program Support**: QECL, IAOLP, and ESATE integration.
+
+See `api/README.md` for setup.
+
 ## Getting Started
 1. Clone the repo: `git clone https://github.com/KOSASIH/SolanaCore`
 2. Install dependencies: See `docs/user-guide.md`.
