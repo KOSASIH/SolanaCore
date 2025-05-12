@@ -15,9 +15,8 @@ jobs:
       - name: Install dependencies
         run: |
           cd api
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Run tests
         run: |
           cd api
-          python -m pytest
+          pytest
