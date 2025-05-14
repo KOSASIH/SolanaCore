@@ -1,31 +1,31 @@
 version: '3.8'
 services:
-  islam-api: # Renamed from 'api' to avoid potential conflicts and clarify purpose
+  solanacore-api:
     build:
-      context: .
-      dockerfile: Dockerfile # Explicitly specify Dockerfile
+      context: ./api
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     env_file:
-      - .env
-    depends_on:
-      - db # If your API depends on a database (optional, adjust as needed)
-    volumes:
-      - .:/app # Mount local directory to /app in container for development
-    networks:
-      - app-network
-  db: # Optional: Add database service if needed
-    image: postgres:13
+      - ./api/.env
     environment:
-      - POSTGRES_DB=islam
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=secret
+      - SOLANA_ENDPOINT=https://api.mainnet-beta.solana.com # Example Solana RPC endpoint
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - ./api:/app
     networks:
-      - app-network
+      - solana-network
+    depends_on:
+      - redis # Optional, if your API uses Redis for caching
+  redis:
+    image: redis:6
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - solana-network
 networks:
-  app-network:
+  solana-network:
     driver: bridge
 volumes:
-  db-data: # Persistent storage for database (if used)
+  redis-data:
