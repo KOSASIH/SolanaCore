@@ -1,8 +1,31 @@
 version: '3.8'
 services:
-  api:
-    build: .
+  islam-api: # Renamed from 'api' to avoid potential conflicts and clarify purpose
+    build:
+      context: .
+      dockerfile: Dockerfile # Explicitly specify Dockerfile
     ports:
       - "8000:8000"
     env_file:
       - .env
+    depends_on:
+      - db # If your API depends on a database (optional, adjust as needed)
+    volumes:
+      - .:/app # Mount local directory to /app in container for development
+    networks:
+      - app-network
+  db: # Optional: Add database service if needed
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=islam
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=secret
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
+volumes:
+  db-data: # Persistent storage for database (if used)
