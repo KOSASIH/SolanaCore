@@ -9,13 +9,32 @@ services:
     env_file:
       - ./api/.env
     environment:
-      - SOLANA_ENDPOINT=https://api.mainnet-beta.solana.com # Example Solana RPC endpoint
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - PI_COIN_PROGRAM_ID=YourPiCoinProgramId
+      - GOVERNANCE_PROGRAM_ID=YourGovernanceProgramId
+      - BRIDGE_PROGRAM_ID=YourBridgeProgramId
+      - QECL_PROGRAM_ID=YourQECLProgramId
+      - IAOLP_PROGRAM_ID=YourIAOLPProgramId
+      - ESATE_PROGRAM_ID=YourESATEProgramId
+      - JWT_SECRET_KEY=quantum-secure-secret
+      - IPFS_API=/ip4/127.0.0.1/tcp/5001
+      - API_PORT=8000
     volumes:
       - ./api:/app
     networks:
       - solana-network
     depends_on:
-      - redis # Optional, if your API uses Redis for caching
+      - ipfs
+      - redis
+  ipfs:
+    image: ipfs/go-ipfs:v0.13.0
+    ports:
+      - "5001:5001"
+      - "8080:8080"
+    volumes:
+      - ipfs-data:/data/ipfs
+    networks:
+      - solana-network
   redis:
     image: redis:6
     ports:
@@ -28,4 +47,5 @@ networks:
   solana-network:
     driver: bridge
 volumes:
+  ipfs-data:
   redis-data:
